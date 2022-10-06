@@ -9,11 +9,28 @@
     <script src="api.js"></script>
 </head>
 <body>
- <p><a href="login.html">Login</a></p> 
+    <nav>
+        <a id="Login" href="login.html">Login</a>
+        <a id="Home" href="index.html">Home</a>
+    </nav>
+ 
 <h1>Tasks</h1>
 <form id="todolist">
-<h2>Add Task <input type="text" id="tasktext"> <button type="submit" id="addButton">Add</button></h2>
-<h2>Search <input type="text" id="searchid"> <button type="submit" id="searchButton">Search</button></h2>
+    <table>
+        <tr>
+            <td><h2>Add Task: </h2></td>
+            <td><input type="text" id="tasktext"></td>
+            <td><button type="submit" id="addButton">Add</button></td>
+            
+        </tr>
+        <tr>
+            <td><h2>Search: </h2></td>
+            <td><input type="text" id="searchid"></td>
+            <td><button type="submit" id="searchButton">Search</button></td>
+            
+        </tr>
+    </table>
+
  <table>
     <thead>
         <td>Id</td>
@@ -21,7 +38,7 @@
         <td>Completed?</td>
         
     </thead>
-    <tbody>
+    <tbody id="tbody">
         
     </tbody>
  </table>

@@ -9,7 +9,7 @@ function createCell (text){
 
 function rendertask(tasks) {
 
-const tablebody = document.querySelector('tbody');
+const tablebody = document.querySelector('#tbody');
     tasks.forEach((task) => {
         const deleteButton = document.createElement('button')
         deleteButton.innerText = "Delete"
@@ -19,9 +19,11 @@ const tablebody = document.querySelector('tbody');
         updateButton.className ="updateButton"
         const checkbox = document.createElement('input')
         checkbox.type = "checkbox"
+        checkbox.className = "checkbox"
        
         
         const tableRow = document.createElement('tr');
+        tableRow.className = 'tableRow'
         tableRow.appendChild(createCell(task.id));
         tableRow.appendChild(createCell(task.title));
         tableRow.appendChild(createCell(task.completed));
@@ -41,7 +43,7 @@ const tablebody = document.querySelector('tbody');
         });
 
         checkbox.addEventListener('change', () => {
-            updateCheckbox(task.id);
+            updateCheckbox(task.id, task.title);
         });
         
     });
@@ -108,7 +110,7 @@ function updateTask (id) {
     });
 };
 
-function updateCheckbox(id) {
+function updateCheckbox(id,title) {
     
     fetch('http://Localhost:3000/tasks', {
        method: 'PUT',
@@ -117,10 +119,11 @@ function updateCheckbox(id) {
         },
        body: JSON.stringify({
         id : id,
-        title : taskupdatecheckbox
+        title : title,
+        completed : true
        })
-       
-    });
+   
+ });
 };
 
 
@@ -135,6 +138,7 @@ indextasks();
     document.getElementById('searchButton').addEventListener('click', () => {
         const searchid = document.getElementById('searchid').value;
         searchTask(searchid);
+        
     });
 
     

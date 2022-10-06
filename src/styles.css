@@ -1,0 +1,119 @@
+body {
+    display:block;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+td {
+    font-size: 24px; 
+}
+
+table {
+border-spacing: 15px 5px;
+}
+
+.deleteButton {
+  background-color: red;
+  color: black;
+  display: inline-block;
+  margin: 4px 2px;
+  border-radius: 16px;
+  border-style: solid;
+  font-size: 24px;
+  font-weight: 530;
+}
+
+.updateButton {
+    background-color: blue;
+    color:white;
+    display: inline-block;
+    margin: 4px 2px;
+    border-radius: 16px;
+    border-style: solid;
+    font-size: 24px;
+    font-weight: 530;
+}
+
+.deleteButton:hover {
+    color: red;
+    background-color: white;
+    border-color: red;
+}
+
+.updateButton:hover {
+    color: blue;
+    background-color: white;
+    border-color: blue;
+}
+
+
+#addButton {
+    display: inline-block;
+    margin: 4px 2px;
+    border-radius: 16px;
+    border-style: solid;
+    background-color: black;
+    color: white;
+    font-size: 24px;
+    width: 100px;
+}
+
+#addButton:hover {
+    background-color: white;
+    color: black;
+}
+#searchButton {
+    display: inline-block;
+    margin: 4px 2px;
+    border-radius: 16px;
+    border-style: solid;
+    background-color: black;
+    color: white;
+    font-size: 24px;
+    width: 100px;
+}
+
+#searchButton:hover {
+    background-color: white;
+    color: black;
+}
+
+input[type="text"] {
+   background-color: lightgray;
+   border-style: solid;
+   border-color: black;
+   border-radius: 7px;
+   height: 24px;
+   width: 200px;
+}
+
+a {
+    background-color: black;
+    color: lightgray;
+    font-size: 25px;
+    
+}
+
+h1 {
+    font-size: 49px;
+}
+
+a:hover {
+    color: blueviolet;
+}
+
+nav {
+    background-color: black;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    
+
+}
+
+#Login {
+text-align: center;
+}
+
+#Home {
+text-align: center;
+}
+
