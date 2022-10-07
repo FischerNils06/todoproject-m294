@@ -20,6 +20,8 @@ const tablebody = document.querySelector('#tbody');
         const checkbox = document.createElement('input')
         checkbox.type = "checkbox"
         checkbox.className = "checkbox"
+        checkbox.checked = task.completed;
+        
        
         
         const tableRow = document.createElement('tr');
@@ -39,11 +41,11 @@ const tablebody = document.querySelector('#tbody');
         });
 
         updateButton.addEventListener('click', () => {
-            updateTask(task.id); 
+            updateTask(task.id, task.completed); 
         });
 
         checkbox.addEventListener('change', () => {
-            updateCheckbox(task.id, task.title);
+            updateCheckbox(task.id, task.title, task.completed);
         });
         
     });
@@ -53,7 +55,7 @@ const tablebody = document.querySelector('#tbody');
 
     let tasksData;
 function indextasks() {
-    fetch('http://Localhost:3000/tasks')
+    fetch('http://127.0.0.1:3000/tasks')
     .then((response) => 
     response.json()
     )
@@ -65,7 +67,7 @@ function indextasks() {
 };
 
 function deleteTask(id) {
-    fetch(`http://Localhost:3000/task/${id}`, {
+    fetch(`http://127.0.0.1:3000/task/${id}`, {
         method: 'DELETE',
     
     
@@ -78,7 +80,7 @@ function deleteTask(id) {
 
 function createTask(tasktitle) {
     
-        fetch('http://Localhost:3000/tasks', {
+        fetch('http://127.0.0.1:3000/tasks', {
         method: 'POST',
         headers: {
             'Content-Type' : 'application/json'
@@ -92,38 +94,60 @@ function createTask(tasktitle) {
 };
 
 function searchTask (id) {              
-                
+    fetch(`http://127.0.0.1:3000/task/${id}`, {
+        method: 'GET',
+        headers: {
+         'Content-Type' : 'application/json'
+         }
+               
+   });
 };
 
-function updateTask (id) {
+function updateTask (id,completedtask) {
     const taskupdatetitle = prompt("New Title");
-    fetch('http://Localhost:3000/tasks', {
+    fetch('http://127.0.0.1:3000/tasks', {
        method: 'PUT',
        headers: {
         'Content-Type' : 'application/json'
         },
        body: JSON.stringify({
         id : id,
-        title : taskupdatetitle
+        title : taskupdatetitle,
+        completed : completedtask
        })
        
     });
 };
 
-function updateCheckbox(id,title) {
+function updateCheckbox(id,title,taskcompleted) {
+        
+    if (taskcompleted == true) {
+        fetch('http://127.0.0.1:3000/tasks', {
+        method: 'PUT',
+        headers: {
+            'Content-Type' : 'application/json'
+            },
+        body: JSON.stringify({
+            id : id,
+            title : title,
+            completed : false
+        })
     
-    fetch('http://Localhost:3000/tasks', {
-       method: 'PUT',
-       headers: {
-        'Content-Type' : 'application/json'
-        },
-       body: JSON.stringify({
-        id : id,
-        title : title,
-        completed : true
-       })
-   
- });
+        }).then(window.location.reload())
+    } else {
+        fetch('http://127.0.0.1:3000/tasks', {
+            method: 'PUT',
+            headers: {
+                'Content-Type' : 'application/json'
+                },
+            body: JSON.stringify({
+                id : id,
+                title : title,
+                completed : true
+            })
+        
+            }).then(window.location.reload())
+    }
 };
 
 
@@ -141,6 +165,7 @@ indextasks();
         
     });
 
+    
     
 });
 

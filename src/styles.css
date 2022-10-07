@@ -11,6 +11,16 @@ table {
 border-spacing: 15px 5px;
 }
 
+label {
+    font-weight: bold;
+    font-size: 34px;
+    display: block;
+}
+
+h1 {
+    font-size: 49px;
+}
+
 .deleteButton {
   background-color: red;
   color: black;
@@ -77,8 +87,32 @@ border-spacing: 15px 5px;
     color: black;
 }
 
-input[type="text"] {
+.submitButton {
+    display: inline-block;
+    margin: 4px 2px;
+    border-radius: 16px;
+    border-style: solid;
+    background-color: black;
+    color: white;
+    font-size: 24px;
+    width: 100px;
+}
+
+.submit.Button:hover {
+    background-color: white;
+    color: black;
+}
+
+input[type="text"]{
    background-color: lightgray;
+   border-style: solid;
+   border-color: black;
+   border-radius: 7px;
+   height: 24px;
+   width: 200px;
+}
+input[type="email"] {
+    background-color: lightgray;
    border-style: solid;
    border-color: black;
    border-radius: 7px;
@@ -93,9 +127,6 @@ a {
     
 }
 
-h1 {
-    font-size: 49px;
-}
 
 a:hover {
     color: blueviolet;
@@ -111,9 +142,21 @@ nav {
 
 #Login {
 text-align: center;
+
 }
 
 #Home {
 text-align: center;
 }
 
+
+.hidden {
+    display: none;
+}
+#titellog {
+    text-align: center;
+    
+}
+#logout {
+    text-align: center;
+}
