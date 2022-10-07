@@ -1,0 +1,35 @@
+commit 73b8b1f0c70b1132c2cb4d61a6d8a1a11dabb761
+Author: Nils Fischer <fischern@bzz.ch>
+Date:   Fri Oct 7 12:16:16 2022 +0200
+
+    checkboxenfunktionimplementiert
+
+commit 4c570ebd9e382cc0ec65cde53dd3b69f7fb4c023
+Author: Nils Fischer <fischern@bzz.ch>
+Date:   Thu Oct 6 22:51:11 2022 +0200
+
+    Checkbox method Implemented
+
+commit f65df26d6cacd0b3ab5d932515fe8f0f7e838c97
+Author: Nils Fischer <fischern@bzz.ch>
+Date:   Thu Oct 6 16:42:00 2022 +0200
+
+    delete and update mehtod implemented
+
+commit eb70cc2e9225286a26d13dd83310cb14c170cd20
+Author: Nils Fischer <fischern@bzz.ch>
+Date:   Thu Oct 6 12:48:38 2022 +0200
+
+    addtask implementiert
+
+commit b9415c4470f4ebe2fcd36eaed8f9e6bdab0b7576
+Author: Nils Fischer <fischern@bzz.ch>
+Date:   Wed Oct 5 22:03:35 2022 +0200
+
+    project started
+
+commit 9fadfb38069482406385657611ae043e56808996
+Author: FischerNils06 <95412224+FischerNils06@users.noreply.github.com>
+Date:   Wed Oct 5 19:56:08 2022 +0200
+
+    Initial commit

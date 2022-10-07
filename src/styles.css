@@ -1,6 +1,7 @@
 body {
     display:block;
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    
 }
 
 td {
@@ -19,6 +20,11 @@ label {
 
 h1 {
     font-size: 49px;
+}
+
+img {
+    margin-top: 15px;
+    margin-left: 15px;
 }
 
 .deleteButton {
@@ -160,3 +166,4 @@ text-align: center;
 #logout {
     text-align: center;
 }
+

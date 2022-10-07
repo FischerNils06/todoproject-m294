@@ -12,7 +12,8 @@ function rendertask(tasks) {
 const tablebody = document.querySelector('#tbody');
     tasks.forEach((task) => {
         const deleteButton = document.createElement('button')
-        deleteButton.innerText = "Delete"
+        const trash = 'Delete'
+        deleteButton.innerHTML = trash
         deleteButton.className ="deleteButton"
         const updateButton = document.createElement('button')
         updateButton.innerText = "Update"
@@ -21,6 +22,7 @@ const tablebody = document.querySelector('#tbody');
         checkbox.type = "checkbox"
         checkbox.className = "checkbox"
         checkbox.checked = task.completed;
+        const searchButton = document.getElementById('searchButton');
         
        
         
@@ -48,14 +50,24 @@ const tablebody = document.querySelector('#tbody');
             updateCheckbox(task.id, task.title, task.completed);
         });
         
+        
     });
-    
+    searchButton.addEventListener('click', () => {
+            const searchid = document.getElementById('searchid').value;
+            
+            searchTask(searchid);
+            
+            
+        });
 };
 
 
     let tasksData;
+
 function indextasks() {
-    fetch('http://127.0.0.1:3000/tasks')
+    fetch('http://127.0.0.1:3000/auth/cookie/tasks', {
+        credentials:'include'
+    })
     .then((response) => 
     response.json()
     )
@@ -67,8 +79,11 @@ function indextasks() {
 };
 
 function deleteTask(id) {
-    fetch(`http://127.0.0.1:3000/task/${id}`, {
-        method: 'DELETE',
+    fetch(`http://127.0.0.1:3000/auth/cookie/task/${id}`, {
+        method: 'DELETE', 
+        credentials: 'include'
+        
+        
     
     
     }).then((response) => 
@@ -78,11 +93,15 @@ function deleteTask(id) {
 };
 
 
-function createTask(tasktitle) {
-    
-        fetch('http://127.0.0.1:3000/tasks', {
+function addTask(tasktitle) {
+        if (tasktitle == '') {
+            alert("No can't add an empty task")
+        } else {
+        fetch('http://127.0.0.1:3000/auth/cookie/tasks', {
         method: 'POST',
+        credentials: 'include',
         headers: {
+            
             'Content-Type' : 'application/json'
         },
         body: JSON.stringify({
@@ -90,30 +109,45 @@ function createTask(tasktitle) {
         })
         
     });  
-    
+    }
 };
 
-function searchTask (id) {              
-    fetch(`http://127.0.0.1:3000/task/${id}`, {
+function searchTask (searchid) {              
+    fetch(`http://127.0.0.1:3000/auth/cookie/task/${searchid}`, {
         method: 'GET',
+        credentials: 'include',
         headers: {
+            
          'Content-Type' : 'application/json'
          }
                
-   });
+   }).then((response) => {
+    if (response.status === 404) {
+        alert("Diesen Eintrag gibt es nicht")
+    }else {
+       alert("Diesen Task gibt es")
+    }
+   })
 };
 
-function updateTask (id,completedtask) {
+function searchtaskshow (task) {
+    const tbody = document.getElementById('tbody')
+
+}
+
+function updateTask (id,completed) {
     const taskupdatetitle = prompt("New Title");
-    fetch('http://127.0.0.1:3000/tasks', {
+    fetch('http://127.0.0.1:3000/auth/cookie/tasks', {
        method: 'PUT',
+       credentials: 'include',
        headers: {
+        
         'Content-Type' : 'application/json'
         },
        body: JSON.stringify({
         id : id,
         title : taskupdatetitle,
-        completed : completedtask
+        completed : completed
        })
        
     });
@@ -122,9 +156,11 @@ function updateTask (id,completedtask) {
 function updateCheckbox(id,title,taskcompleted) {
         
     if (taskcompleted == true) {
-        fetch('http://127.0.0.1:3000/tasks', {
+        fetch('http://127.0.0.1:3000/auth/cookie/tasks', {
         method: 'PUT',
+        credentials: 'include',
         headers: {
+            
             'Content-Type' : 'application/json'
             },
         body: JSON.stringify({
@@ -135,9 +171,11 @@ function updateCheckbox(id,title,taskcompleted) {
     
         }).then(window.location.reload())
     } else {
-        fetch('http://127.0.0.1:3000/tasks', {
+        fetch('http://127.0.0.1:3000/auth/cookie/tasks', {
             method: 'PUT',
+            credentials: 'include',
             headers: {
+                
                 'Content-Type' : 'application/json'
                 },
             body: JSON.stringify({
@@ -156,14 +194,10 @@ document.addEventListener("DOMContentLoaded", () => {
 indextasks();
     document.getElementById('addButton').addEventListener('click', () => {
         const tasktitle = document.getElementById('tasktext').value;
-        createTask(tasktitle);
+        addTask(tasktitle);
     });
 
-    document.getElementById('searchButton').addEventListener('click', () => {
-        const searchid = document.getElementById('searchid').value;
-        searchTask(searchid);
-        
-    });
+    
 
     
     
